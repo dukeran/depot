@@ -22,5 +22,11 @@ class Product < ApplicationRecord
       errors.add(:base, 'Line Items present')
       throw :abort
     end
-  end	
+  end
+
+  def ensure_an_admin_remains
+    if User.count.zero?
+      raise "Can't delete last user"
+    end
+  end 
 end

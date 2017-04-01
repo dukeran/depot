@@ -12,7 +12,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
 
   test "requires item in cart" do
     get new_order_url
-    assert_redirected_to store_index_path
+    assert_redirected_to store_url
     assert_equal flash[:notice], 'Your cart is empty'
   end
 
@@ -30,7 +30,7 @@ class OrdersControllerTest < ActionDispatch::IntegrationTest
         pay_type: @order.pay_type } }
     end
 
-    assert_redirected_to store_index_url
+    assert_redirected_to store_url
   end
 
   test "should show order" do
